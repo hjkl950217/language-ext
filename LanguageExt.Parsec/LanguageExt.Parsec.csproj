@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
@@ -24,6 +24,12 @@
     <OutputType>library</OutputType>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <FileVersion>3.0.0.0</FileVersion>
+
+      <LangVersion>8.0</LangVersion>
+      <Nullable>enable</Nullable>
+      <!-- NullableContextOptions will be replaced by Nullable in dotnet core 3.0 -->
+      <NullableContextOptions>enable</NullableContextOptions>
+
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <LangVersion>7.1</LangVersion>

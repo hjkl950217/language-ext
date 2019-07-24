@@ -32,9 +32,9 @@ namespace LanguageExt.ClassInstances
                 Bottom: () => default(MONADB).Fail(BottomException.Default));
 
         [Pure]
-        public Either<L, R> Fail(object err = null) =>
-            err != null && err is L
-                ? Either<L, R>.Left((L)err)
+        public Either<L, R> Fail(object? err = null) =>
+            err is L lerr
+                ? Either<L, R>.Left(lerr)
                 : Either<L, R>.Bottom;
 
         [Pure]
@@ -185,7 +185,7 @@ namespace LanguageExt.ClassInstances
 
 
         [Pure]
-        public C Match<C>(Either<L, R> choice, Func<L, C> Left, Func<R, C> Right, Func<C> Bottom = null) =>
+        public C Match<C>(Either<L, R> choice, Func<L, C> Left, Func<R, C> Right, Func<C>? Bottom = null) =>
             choice.State == EitherStatus.IsBottom
                 ? Bottom == null
                     ? throw new BottomException()
@@ -195,7 +195,7 @@ namespace LanguageExt.ClassInstances
                     : Check.NullReturn(Right(choice.right));
 
         [Pure]
-        public Unit Match(Either<L, R> choice, Action<L> Left, Action<R> Right, Action Bottom = null)
+        public Unit Match(Either<L, R> choice, Action<L> Left, Action<R> Right, Action? Bottom = null)
         {
             if (choice.State == EitherStatus.IsRight) Right(choice.right);
             if (choice.State == EitherStatus.IsLeft) Left(choice.left);
