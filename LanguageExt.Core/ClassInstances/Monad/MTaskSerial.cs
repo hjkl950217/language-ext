@@ -14,19 +14,20 @@ namespace LanguageExt.ClassInstances
     ///     BiFoldableAsync
     ///     OptionalAsymc
     ///     OptionalUnsafeAsync
+    ///     
     /// </summary>
     /// <remarks>
-    /// The `Plus` function will return `ma` if successful, `mb` otherwise
+    /// The `Plus` function will run `ma` and `mb` in serial and will return the result of `mb`
     /// </remarks>
     /// <typeparam name="A">Bound value type</typeparam>
-    public struct MTask<A> :
+    public struct MTaskSerial<A> :
         OptionalAsync<Task<A>, A>,
         OptionalUnsafeAsync<Task<A>, A>,
         MonadAsync<Task<A>, A>,
         FoldableAsync<Task<A>, A>,
         BiFoldableAsync<Task<A>, A, Unit>
     {
-        public static readonly MTask<A> Inst = default(MTask<A>);
+        public static readonly MTaskSerial<A> Inst = default;
 
         [Pure]
         public Task<A> None =>
@@ -45,19 +46,13 @@ namespace LanguageExt.ClassInstances
             default(MTaskFirst<A>).Fail(err);
 
         /// <summary>
-        /// The `Plus` function will return `ma` if successful, `mb` otherwise
+        /// The `Plus` function will run `ma` and `mb` in serial and will return the result of `mb`
         /// </summary>
         [Pure]
         public async Task<A> Plus(Task<A> ma, Task<A> mb)
         {
-            try
-            {
-                return await ma;
-            }
-            catch
-            {
-                return await mb;
-            }
+            await ma;
+            return await mb;
         }
 
         /// <summary>

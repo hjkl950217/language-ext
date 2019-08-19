@@ -1048,6 +1048,8 @@ namespace LanguageExt
                     //If key lies in a sub-node
                     var ind = Index(NodeMap, mask);
                     var (cd, subNode) = Nodes[ind].Remove(key, hash, section.Next());
+                    if (cd == 0) return (0, this);
+
                     switch (subNode.Type)
                     {
                         case Tag.Entries:
@@ -1059,7 +1061,13 @@ namespace LanguageExt
                                 // If the node only has one subnode, make that subnode the new node
                                 if (Items.Length == 0 && Nodes.Length == 1)
                                 {
-                                    return (cd, subEntries);
+                                    // Build a new Entries for this level with the sublevel mask fixed
+                                    return (cd, new Entries(
+                                        Mask(Bit.Get((uint)default(EqK).GetHashCode(subEntries.Items[0].Key), section)),
+                                        0,
+                                        Clone(subEntries.Items),
+                                        new Node[0]
+                                        ));
                                 }
                                 else
                                 {
