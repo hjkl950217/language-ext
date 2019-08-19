@@ -205,7 +205,7 @@ namespace LanguageExt.ClassInstances
         }
 
         [Pure]
-        public C MatchUnsafe<C>(Either<L, R> choice, Func<L, C> Left, Func<R, C> Right, Func<C> Bottom = null) =>
+        public C MatchUnsafe<C>(Either<L, R> choice, Func<L, C> Left, Func<R, C> Right, Func<C>? Bottom = null) =>
             choice.State == EitherStatus.IsBottom
                 ? Bottom == null
                     ? throw new BottomException()

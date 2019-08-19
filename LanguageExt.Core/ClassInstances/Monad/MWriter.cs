@@ -40,7 +40,7 @@ namespace LanguageExt.ClassInstances
         }
 
         [Pure]
-        public Writer<MonoidW, W, A> Fail(object err = null) =>
+        public Writer<MonoidW, W, A> Fail(object? err = null) =>
             new Writer<MonoidW, W, A>(() => (default(A), default(MonoidW).Empty(), true));
 
         [Pure]

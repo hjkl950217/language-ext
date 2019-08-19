@@ -31,7 +31,7 @@ namespace LanguageExt.ClassInstances
                 : default(MONADB).Fail(ValueIsNoneException.Default);
 
         [Pure]
-        public OptionUnsafe<A> Fail(object err = null) =>
+        public OptionUnsafe<A> Fail(object? err = null) =>
             OptionUnsafe<A>.None;
 
         [Pure]

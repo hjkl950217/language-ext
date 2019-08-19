@@ -61,7 +61,7 @@ namespace LanguageExt.ClassInstances
         }
 
         [Pure]
-        public Arr<A> Fail(object err = null) =>
+        public Arr<A> Fail(object? err = null) =>
             Empty();
 
         [Pure]

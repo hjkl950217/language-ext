@@ -44,6 +44,8 @@ namespace LanguageExt
         IEquatable<EitherRight<R>>,
         IEquatable<R>, 
         ISerializable
+        where L : notnull
+        where R : notnull
     {
         public readonly static Either<L, R> Bottom = new Either<L, R>();
 

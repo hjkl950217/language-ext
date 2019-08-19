@@ -32,7 +32,7 @@ namespace LanguageExt.ClassInstances
             });
 
         [Pure]
-        public Reader<Env, A> Fail(object err = null) =>
+        public Reader<Env, A> Fail(object? err = null) =>
             new Reader<Env, A>(_ => (default(A), true));
 
         [Pure]

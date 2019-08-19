@@ -36,7 +36,7 @@ namespace LanguageExt.ClassInstances
                     : default(MonadB).Fail(ValueIsNoneException.Default));
 
         [Pure]
-        public OptionAsync<A> Fail(object err = null) =>
+        public OptionAsync<A> Fail(object? err = null) =>
             OptionAsync<A>.None;
 
         [Pure]

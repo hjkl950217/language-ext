@@ -30,12 +30,12 @@ namespace LanguageExt.TypeClasses
         /// </summary>
         /// <typeparam name="C">Return type</typeparam>
         [Pure]
-        C Match<C>(CH choice, Func<L, C> Left, Func<R, C> Right, Func<C> Bottom = null);
+        C Match<C>(CH choice, Func<L, C> Left, Func<R, C> Right, Func<C>? Bottom = null);
 
         /// <summary>
         /// Match the two states of the Choice and return a non-null C.
         /// </summary>
         /// <typeparam name="C">Return type</typeparam>
-        Unit Match(CH choice, Action<L> Left, Action<R> Right, Action Bottom = null);
+        Unit Match(CH choice, Action<L> Left, Action<R> Right, Action? Bottom = null);
     }
 }

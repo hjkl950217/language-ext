@@ -29,7 +29,7 @@ namespace LanguageExt.ClassInstances
                 Bottom: () => default(MONADB).Fail(BottomException.Default));
 
         [Pure]
-        public EitherUnsafe<L, R> Fail(object err = null) =>
+        public EitherUnsafe<L, R> Fail(object? err = null) =>
             err != null && err is L
                 ? EitherUnsafe<L, R>.Left((L)err)
                 : EitherUnsafe<L, R>.Bottom;
@@ -131,7 +131,7 @@ namespace LanguageExt.ClassInstances
 
         [Pure]
         public EitherUnsafe<L, R> None =>
-            default(R);
+            EitherUnsafe<L, R>.Left(default);
 
         static A DefaultBottom<A>() =>
             raise<A>(new BottomException());
@@ -174,7 +174,7 @@ namespace LanguageExt.ClassInstances
             choice.State == EitherStatus.IsBottom;
 
         [Pure]
-        public C MatchUnsafe<C>(EitherUnsafe<L, R> choice, Func<L, C> Left, Func<R, C> Right, Func<C> Bottom = null) =>
+        public C MatchUnsafe<C>(EitherUnsafe<L, R> choice, Func<L, C> Left, Func<R, C> Right, Func<C>? Bottom = null) =>
             choice.State == EitherStatus.IsBottom
                 ? Bottom == null
                     ? throw new BottomException()
@@ -184,7 +184,7 @@ namespace LanguageExt.ClassInstances
                     : Right(choice.right);
 
         [Pure]
-        public Unit Match(EitherUnsafe<L, R> choice, Action<L> Left, Action<R> Right, Action Bottom = null)
+        public Unit Match(EitherUnsafe<L, R> choice, Action<L> Left, Action<R> Right, Action? Bottom = null)
         {
             if (choice.State == EitherStatus.IsRight) Right(choice.right);
             if (choice.State == EitherStatus.IsLeft) Left(choice.left);

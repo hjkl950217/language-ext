@@ -73,15 +73,15 @@ namespace LanguageExt.ClassInstances
             choice.IsSuccess;
 
         [Pure]
-        public C Match<C>(Validation<MonoidFail, FAIL, SUCCESS> choice, Func<FAIL, C> Left, Func<SUCCESS, C> Right, Func<C> Bottom = null) =>
+        public C Match<C>(Validation<MonoidFail, FAIL, SUCCESS> choice, Func<FAIL, C> Left, Func<SUCCESS, C> Right, Func<C>? Bottom = null) =>
             choice.Match(Right, Left);
 
         [Pure]
-        public Unit Match(Validation<MonoidFail, FAIL, SUCCESS> choice, Action<FAIL> Left, Action<SUCCESS> Right, Action Bottom = null) =>
+        public Unit Match(Validation<MonoidFail, FAIL, SUCCESS> choice, Action<FAIL> Left, Action<SUCCESS> Right, Action? Bottom = null) =>
             choice.Match(Right, Left);
 
         [Pure]
-        public C MatchUnsafe<C>(Validation<MonoidFail, FAIL, SUCCESS> choice, Func<FAIL, C> Left, Func<SUCCESS, C> Right, Func<C> Bottom = null) =>
+        public C MatchUnsafe<C>(Validation<MonoidFail, FAIL, SUCCESS> choice, Func<FAIL, C> Left, Func<SUCCESS, C> Right, Func<C>? Bottom = null) =>
             choice.MatchUnsafe(Right, Left);
 
         [Pure]
@@ -101,7 +101,7 @@ namespace LanguageExt.ClassInstances
             mb;
 
         [Pure]
-        public Validation<MonoidFail, FAIL, SUCCESS> Fail(object err = null) =>
+        public Validation<MonoidFail, FAIL, SUCCESS> Fail(object? err = null) =>
             err != null && err is FAIL
                 ? Validation<MonoidFail, FAIL, SUCCESS>.Fail((FAIL)err)
                 : Validation<MonoidFail, FAIL, SUCCESS>.Fail(default(MonoidFail).Empty());

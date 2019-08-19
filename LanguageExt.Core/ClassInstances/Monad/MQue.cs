@@ -51,7 +51,7 @@ namespace LanguageExt.ClassInstances
             x == y;
 
         [Pure]
-        public Que<A> Fail(object err = null) =>
+        public Que<A> Fail(object? err = null) =>
             Que<A>.Empty;
 
         [Pure]

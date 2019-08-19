@@ -29,7 +29,7 @@ namespace LanguageExt.ClassInstances
             default(MTryOptionFirstAsync<A>).BindAsync<MONADB, MB, B>(ma, f);
 
         [Pure]
-        public TryOptionAsync<A> Fail(object err = null) =>
+        public TryOptionAsync<A> Fail(object? err = null) =>
             default(MTryOptionFirstAsync<A>).Fail(err);
 
         [Pure]

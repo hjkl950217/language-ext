@@ -131,7 +131,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> Match<Ret>(Func<R, Ret> Right, Func<L, Ret> Left, Func<Ret> Bottom = null) =>
+        public async Task<Ret> Match<Ret>(Func<R, Ret> Right, Func<L, Ret> Left, Func<Ret>? Bottom = null) =>
             Check.NullReturn(await MatchUnsafe(Right, Left, Bottom));
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchAsync<Ret>(Func<R, Ret> Right, Func<L, Task<Ret>> LeftAsync, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchAsync<Ret>(Func<R, Ret> Right, Func<L, Task<Ret>> LeftAsync, Func<Ret>? Bottom = null) =>
             Check.NullReturn(await MatchUnsafeAsync(Right, LeftAsync, Bottom));
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Ret> Left, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Ret> Left, Func<Ret>? Bottom = null) =>
             Check.NullReturn(await MatchUnsafeAsync(RightAsync, Left, Bottom));
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Task<Ret>> LeftAsync, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Task<Ret>> LeftAsync, Func<Ret>? Bottom = null) =>
             Check.NullReturn(await MatchUnsafeAsync(RightAsync, LeftAsync, Bottom));
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchUnsafe<Ret>(Func<R, Ret> Right, Func<L, Ret> Left, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchUnsafe<Ret>(Func<R, Ret> Right, Func<L, Ret> Left, Func<Ret>? Bottom = null) =>
             await IsBottom
                 ? Bottom == null
                     ? throw new BottomException()
@@ -201,7 +201,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchUnsafeAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Ret> Left, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchUnsafeAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Ret> Left, Func<Ret>? Bottom = null) =>
             await IsBottom
                 ? Bottom == null
                     ? throw new BottomException()
@@ -223,7 +223,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchUnsafeAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Task<Ret>> LeftAsync, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchUnsafeAsync<Ret>(Func<R, Task<Ret>> RightAsync, Func<L, Task<Ret>> LeftAsync, Func<Ret>? Bottom = null) =>
             await IsBottom
                 ? Bottom == null
                     ? throw new BottomException()
@@ -245,7 +245,7 @@ namespace LanguageExt
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
         /// <returns>The return value of the invoked function</returns>
         [Pure]
-        public async Task<Ret> MatchUnsafeAsync<Ret>(Func<R, Ret> Right, Func<L, Task<Ret>> LeftAsync, Func<Ret> Bottom = null) =>
+        public async Task<Ret> MatchUnsafeAsync<Ret>(Func<R, Ret> Right, Func<L, Task<Ret>> LeftAsync, Func<Ret>? Bottom = null) =>
             await IsBottom
                 ? Bottom == null
                     ? throw new BottomException()
@@ -265,7 +265,7 @@ namespace LanguageExt
         /// <param name="Left">Action to invoke if in a Left state</param>
         /// <returns>Unit</returns>
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
-        public async Task<Unit> Match(Action<R> Right, Action<L> Left, Action Bottom = null)
+        public async Task<Unit> Match(Action<R> Right, Action<L> Left, Action? Bottom = null)
         {
             if (await IsRight)
             {
@@ -296,7 +296,7 @@ namespace LanguageExt
         /// <param name="LeftAsync">Action to invoke if in a Left state</param>
         /// <returns>Unit</returns>
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
-        public async Task<Unit> MatchAsync(Action<R> Right, Func<L, Task> LeftAsync, Action Bottom = null)
+        public async Task<Unit> MatchAsync(Action<R> Right, Func<L, Task> LeftAsync, Action? Bottom = null)
         {
             if (await IsRight)
             {
@@ -327,7 +327,7 @@ namespace LanguageExt
         /// <param name="Left">Action to invoke if in a Left state</param>
         /// <returns>Unit</returns>
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
-        public async Task<Unit> MatchAsync(Func<R, Task> RightAsync, Action<L> Left, Action Bottom = null)
+        public async Task<Unit> MatchAsync(Func<R, Task> RightAsync, Action<L> Left, Action? Bottom = null)
         {
             if (await IsRight)
             {
@@ -358,7 +358,7 @@ namespace LanguageExt
         /// <param name="LeftAsync">Action to invoke if in a Left state</param>
         /// <returns>Unit</returns>
         /// <exception cref="BottomException">Thrown if matching on an Either in a bottom state</exception>
-        public async Task<Unit> MatchAsync(Func<R, Task> RightAsync, Func<L, Task> LeftAsync, Action Bottom = null)
+        public async Task<Unit> MatchAsync(Func<R, Task> RightAsync, Func<L, Task> LeftAsync, Action? Bottom = null)
         {
             if (await IsRight)
             {

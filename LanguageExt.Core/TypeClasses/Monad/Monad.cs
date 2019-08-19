@@ -205,7 +205,7 @@ namespace LanguageExt.TypeClasses
         /// Produce a monad of `MA` in it's failed state
         /// </summary>
         [Pure]
-        MA Fail(object err = null);
+        MA Fail(object? err = null);
 
         /// <summary>
         /// Associative binary operation

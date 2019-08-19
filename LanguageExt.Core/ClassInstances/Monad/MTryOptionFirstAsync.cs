@@ -58,7 +58,7 @@ namespace LanguageExt.ClassInstances
             });
 
         [Pure]
-        public TryOptionAsync<A> Fail(object err = null) =>
+        public TryOptionAsync<A> Fail(object? err = null) =>
             err != null && err is Exception
                 ? TryOptionAsync<A>((Exception)err)
                 : TryOptionAsync(Option<A>.None);

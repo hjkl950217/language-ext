@@ -72,15 +72,15 @@ namespace LanguageExt.ClassInstances
             choice.IsSuccess;
 
         [Pure]
-        public C Match<C>(Validation<FAIL, SUCCESS> choice, Func<Seq<FAIL>, C> Left, Func<SUCCESS, C> Right, Func<C> Bottom = null) =>
+        public C Match<C>(Validation<FAIL, SUCCESS> choice, Func<Seq<FAIL>, C> Left, Func<SUCCESS, C> Right, Func<C>? Bottom = null) =>
             choice.Match(Right, Left);
 
         [Pure]
-        public Unit Match(Validation<FAIL, SUCCESS> choice, Action<Seq<FAIL>> Left, Action<SUCCESS> Right, Action Bottom = null) =>
+        public Unit Match(Validation<FAIL, SUCCESS> choice, Action<Seq<FAIL>> Left, Action<SUCCESS> Right, Action? Bottom = null) =>
             choice.Match(Right, Left);
 
         [Pure]
-        public C MatchUnsafe<C>(Validation<FAIL, SUCCESS> choice, Func<Seq<FAIL>, C> Left, Func<SUCCESS, C> Right, Func<C> Bottom = null) =>
+        public C MatchUnsafe<C>(Validation<FAIL, SUCCESS> choice, Func<Seq<FAIL>, C> Left, Func<SUCCESS, C> Right, Func<C>? Bottom = null) =>
             choice.MatchUnsafe(Right, Left);
 
         [Pure]
@@ -104,7 +104,7 @@ namespace LanguageExt.ClassInstances
             Validation<FAIL, SUCCESS>.Fail(err);
 
         [Pure]
-        public Validation<FAIL, SUCCESS> Fail(object err = null) =>
+        public Validation<FAIL, SUCCESS> Fail(object? err = null) =>
             err is Seq<FAIL> 
                 ? Validation<FAIL, SUCCESS>.Fail((Seq<FAIL>)err)
                 : err is FAIL 
