@@ -12,7 +12,7 @@ using static System.Console;
 using LanguageExt.Parsec;
 using static LanguageExt.Parsec.Prim;
 using static LanguageExt.Parsec.Char;
-
+using LanguageExt.Transformers;
 
 
 namespace LanguageExt.Tests

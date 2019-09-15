@@ -1,6 +1,7 @@
 ﻿using Xunit;
 using LanguageExt;
 using static LanguageExt.Prelude;
+using LanguageExt.Transformers;
 using LanguageExt.ClassInstances;
 using System;
 using System.Net.Http;

@@ -3,7 +3,7 @@ using LanguageExt.TypeClasses;
 using LanguageExt.ClassInstances;
 using System.Threading.Tasks;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     public static class MonadTransAsyncExtensions
     {

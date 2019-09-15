@@ -16,6 +16,7 @@ using System.Runtime.Serialization;
 using static LanguageExt.Prelude;
 using LanguageExt.ClassInstances;
 using LanguageExt.TypeClasses;
+using LanguageExt.Transformers;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Threading.Tasks;

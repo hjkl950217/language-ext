@@ -3,7 +3,7 @@ using LanguageExt.TypeClasses;
 using static LanguageExt.Prelude;
 using System;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     /// <summary>
     /// Default monad transformer, can nest any two monadic types and provide the

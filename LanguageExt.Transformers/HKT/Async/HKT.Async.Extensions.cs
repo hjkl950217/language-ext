@@ -10,7 +10,7 @@ using LanguageExt.TypeClasses;
 using LanguageExt.ClassInstances;
 using static LanguageExt.Prelude;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     /// <summary>
     /// Async monad transformer for OptionAsync, provides functionality for working 

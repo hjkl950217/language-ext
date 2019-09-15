@@ -4,6 +4,7 @@ using System.Linq;
 using Xunit;
 using LanguageExt;
 using static LanguageExt.Prelude;
+using LanguageExt.Transformers;
 using LanguageExt.ClassInstances;
 
 namespace LanguageExt.Tests

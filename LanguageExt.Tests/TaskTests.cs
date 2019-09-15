@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Xunit;
+using LanguageExt.Transformers;
 using static LanguageExt.Prelude;
 using LanguageExt.ClassInstances;
 using LanguageExt;

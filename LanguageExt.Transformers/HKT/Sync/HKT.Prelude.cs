@@ -9,7 +9,7 @@ using LanguageExt.TypeClasses;
 using LanguageExt.ClassInstances;
 using static LanguageExt.Prelude;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     public static partial class ArrT
     {

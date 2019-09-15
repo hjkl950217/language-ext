@@ -4,7 +4,7 @@ using static LanguageExt.Prelude;
 using System;
 using System.Threading.Tasks;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     /// <summary>
     /// Default monad transformer, can nest any two monadic types and provide the

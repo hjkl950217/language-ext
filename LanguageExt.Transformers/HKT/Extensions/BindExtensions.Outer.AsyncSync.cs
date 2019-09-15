@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static LanguageExt.Prelude;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     public static partial class BindExtensions
     {

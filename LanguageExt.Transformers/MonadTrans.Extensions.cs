@@ -5,7 +5,7 @@ using System.Text;
 using LanguageExt.TypeClasses;
 using LanguageExt.ClassInstances;
 
-namespace LanguageExt
+namespace LanguageExt.Transformers
 {
     public static class MonadTransExtensions
     {

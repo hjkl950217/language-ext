@@ -5,6 +5,7 @@ using static LanguageExt.List;
 using static LanguageExt.Prelude;
 using static LanguageExt.TypeClass;
 using LanguageExt.ClassInstances;
+using LanguageExt.Transformers;
 
 namespace LanguageExt.Tests
 {
