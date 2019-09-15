@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
     <PropertyGroup Label="Configuration" Condition="'$(Configuration)'=='Debug'">
         <DefineConstants>TRACE;DEBUG</DefineConstants>
     </PropertyGroup>
@@ -56,86 +56,6 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="README.md" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Update="HKT\Async\HKT.Async.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.Async.Extensions.tt</DependentUpon>
-        </Compile>
-        <Compile Update="HKT\AsyncSync\HKT.AsyncSync.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.AsyncSync.Extensions.tt</DependentUpon>
-        </Compile>
-        <Compile Update="HKT\SyncAsync\HKT.SyncAsync.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.SyncAsync.Extensions.tt</DependentUpon>
-        </Compile>
-        <Compile Update="HKT\Sync\HKT.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.Extensions.tt</DependentUpon>
-        </Compile>
-        <Compile Update="HKT\Sync\HKT.Prelude.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.Prelude.tt</DependentUpon>
-        </Compile>
-        <None Update="HKT\AsyncSync\HKT.AsyncSync.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.AsyncSync.Extensions.tt</DependentUpon>
-        </None>
-        <None Update="HKT\Async\HKT.Async.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.Async.Extensions.tt</DependentUpon>
-        </None>
-        <None Update="HKT\SyncAsync\HKT.Async.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-        </None>
-        <None Update="HKT\SyncAsync\HKT.Async.Extensions.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>HKT.Async.Extensions.cs</LastGenOutput>
-        </None>
-        <None Update="HKT\SyncAsync\HKT.SyncAsync.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.SyncAsync.Extensions.tt</DependentUpon>
-        </None>
-        <None Update="HKT\SyncAsync\HKT.SyncAsync.Extensions.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>HKT.SyncAsync.Extensions.cs</LastGenOutput>
-        </None>
-        <None Update="HKT\Sync\HKT.Extensions.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.Extensions.tt</DependentUpon>
-        </None>
-        <None Update="HKT\Sync\HKT.Prelude.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>HKT.Prelude.tt</DependentUpon>
-        </None>
-        <None Update="HKT\Sync\HKT.Prelude.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>HKT.Prelude.cs</LastGenOutput>
-        </None>
-        <None Update="HKT\Sync\HKT.Extensions.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>HKT.Extensions.cs</LastGenOutput>
-        </None>
-        <None Update="HKT\Async\HKT.Async.Extensions.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>HKT.Async.Extensions.cs</LastGenOutput>
-        </None>
-        <None Update="HKT\AsyncSync\HKT.AsyncSync.Extensions.tt">
-            <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>HKT.AsyncSync.Extensions.cs</LastGenOutput>
-        </None>
     </ItemGroup>
     <ItemGroup>
         <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />

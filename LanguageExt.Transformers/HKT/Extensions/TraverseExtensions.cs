@@ -1,4 +1,5 @@
-﻿using LanguageExt.TypeClasses;
+﻿using LanguageExt.Common;
+using LanguageExt.TypeClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,9 +94,9 @@ namespace LanguageExt
             var values = new List<A>();
             foreach (var item in ma)
             {
-                var resA = item(env);
-                if (resA.IsFaulted) return ReaderResult<List<A>>.New(resA.ErrorInt);
-                values.Add(resA.Value);
+                var (a, error) = item(env);
+                if (error.IsSome) return ReaderResult<List<A>>.New((Error)error);
+                values.Add(a);
             }
             return ReaderResult<List<A>>.New(values);
         };
@@ -105,9 +106,9 @@ namespace LanguageExt
             var values = new List<B>();
             foreach (var item in ma)
             {
-                var resA = item(env);
-                if (resA.IsFaulted) return ReaderResult<List<B>>.New(resA.ErrorInt);
-                values.Add(f(resA.Value));
+                var (a, error) = item(env);
+                if (error.IsSome) return ReaderResult<List<B>>.New((Error)error);
+                values.Add(f(a));
             }
             return ReaderResult<List<B>>.New(values);
         };
@@ -248,11 +249,11 @@ namespace LanguageExt
             var output = default(MonoidW).Empty();
             foreach (var item in ma)
             {
-                var res = item(env, state);
-                if (res.IsFaulted) return RWSResult<MonoidW, R, W, S, List<A>>.New(state, res.Error);
-                values.Add(res.Value);
-                state = res.State;
-                output = default(MonoidW).Append(output, res.Output);
+                var (a, noutput, nstate, error) = item(env, state);
+                if (error.IsSome) return RWSResult<MonoidW, R, W, S, List<A>>.New(noutput, nstate, (Error)error);
+                values.Add(a);
+                state = nstate;
+                output = default(MonoidW).Append(output, noutput);
             }
             return RWSResult<MonoidW, R, W, S, List<A>>.New(output, state, values);
         };
@@ -263,11 +264,11 @@ namespace LanguageExt
             var output = default(MonoidW).Empty();
             foreach (var item in ma)
             {
-                var res = item(env, state);
-                if (res.IsFaulted) return RWSResult<MonoidW, R, W, S, List<B>>.New(state, res.Error);
-                values.Add(f(res.Value));
-                state = res.State;
-                output = default(MonoidW).Append(output, res.Output);
+                var (a, noutput, nstate, error) = item(env, state);
+                if (error.IsSome) return RWSResult<MonoidW, R, W, S, List<B>>.New(noutput, nstate, (Error)error);
+                values.Add(f(a));
+                state = nstate;
+                output = default(MonoidW).Append(output, noutput);
             }
             return RWSResult<MonoidW, R, W, S, List<B>>.New(output, state, values);
         };

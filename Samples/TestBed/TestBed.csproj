@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -24,6 +24,7 @@
         <ProjectReference Include="..\..\LanguageExt.Core\LanguageExt.Core.csproj" />
         <ProjectReference Include="..\..\LanguageExt.FSharp\LanguageExt.FSharp.csproj" />
         <ProjectReference Include="..\..\LanguageExt.Parsec\LanguageExt.Parsec.csproj" />
+        <ProjectReference Include="..\..\LanguageExt.Transformers\LanguageExt.Transformers.csproj" />
     </ItemGroup>
 
 </Project>
